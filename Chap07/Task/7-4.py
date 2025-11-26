@@ -2,7 +2,7 @@ message = '请输入您想添加的食材:\n'
 
 active = True
 while active:
-    food = input(message)
+    food = input(message).strip() # 去除空格
     if food == 'quit':
         active = False
     else:
