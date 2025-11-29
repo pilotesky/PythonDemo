@@ -1,18 +1,22 @@
-# 显示原始的列表
+# 先定义一个函数 用于输出演员列表
 def show_actors(actors):
+    # 使用for循环输出
     for actor in actors:
         print(actor)
-# 定义一个make_great()函数输出带the great的信息
-def make_great(actors):
-    for top in range(len(actors)):
-        actors[top] = f'the great {actors[top]}'
 
-# 原始的演员列表
+# 再定义一个函数用于给用户名之前加上 the great
+def make_great(actors):
+    # 根据索引来修改
+    for index in range(len(actors)):
+        actors[index] = f'the great {actors[index]}'
+
+
+# 演员列表
 actor_list = ['张三','李四','王五']
-# 输出原始的列表
+# 调用 输出
 show_actors(actor_list)
 
-# 调用一次the great
+# 调用 the great 函数
 make_great(actor_list)
-# 输出结果
+# 再次调用 输出
 show_actors(actor_list)

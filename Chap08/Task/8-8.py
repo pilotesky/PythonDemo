@@ -1,36 +1,41 @@
-def make_album(artist,album_name):
-    album_info = {'歌手名称':artist,'专辑名称':album_name}
-    return album_info
+def make_album(artist_name,album_title):
+    full_album_info = {'歌手名称':artist_name,'专辑名称':album_title}
+    return full_album_info
 
-# 先定义一个集合 用来存储输入的信息
-album_collection = {}
+# 创建一个列表用来存放用户输入的歌手及专辑的字典信息
+album_collection = []
 
+# 开始while循环输入
 while True:
 
-    # 输入歌手信息
-    artist_name = input('请输入歌手名称:\n')
-    if artist_name == 'quit':
-        print('您选择退出,程序退出')
+    # 首先是检查输入的歌手名称
+    name = input('请输入歌手名称,如果输入quit则立即退出程序:\n')
+    # 如果输入 quit 则立即退出程序
+    if name == 'quit':
+        print('退出程序')
         break
-    if artist_name.isdigit():
-        print('您的输入有误,请重新输入')
+    # 如果输入非字符内容,则提示用户重新输入
+    if name.isdigit():
+        print('您的输入有误,请重新输入:\n')
         continue
 
-    # 输入专辑信息
-    album_title = input('请输入专辑名称:\n')
-    if album_title == 'quit':
-        print('您选择退出,程序退出')
+    # 其次是输入专辑信息
+    title = input('请输入专辑名称,如果输入quit则立即退出程序:\n')
+    # 如果输入 quit 则立即退出程序
+    if title == 'quit':
+        print('退出程序')
         break
-    if album_title.isdigit():
-        print('您的输入有误,请重新输入')
+    # 如果输入非字符内容,则提示用户重新输入
+    if title.isdigit():
+        print('您的输入有误,请重新输入:\n')
         continue
 
-    # 完整的专辑信息是来自用的输入 artist_name 歌手名词性 album_title 专辑名称
-    full_album_info = make_album(artist_name,album_title)
-    # 向空的专辑集合中添加键值对，键是歌手名称 值是[歌手:专辑名称]这个键值对
-    # 这里也可以选择等于album_title 只是存储的结构变
-    # 按照现有的结构是 邓紫棋 = {'邓紫棋','泡沫'}
-    # 如果是等于album_title 存储结构将变为 邓紫棋 = 泡沫
-    album_collection[artist_name] = full_album_info
-    # 输出完整的专辑信息
-    print(full_album_info)
+    new_album = make_album(name,title)
+    album_collection.append(new_album)
+
+    # 立即输出刚刚添加的专辑信息
+    print(f'最新添加的专辑信息: {new_album}')
+
+print('--------所有的专辑信息如下--------')
+for album in album_collection:
+    print(album)
